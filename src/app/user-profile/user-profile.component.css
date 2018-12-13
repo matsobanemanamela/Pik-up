@@ -1,0 +1,39 @@
+body {
+    background: whitesmoke no-repeat center center fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+}
+
+nav {
+    position: absolute;
+    /* top: 30px; */
+    z-index: 999;
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.nav .navbar-nav a {
+    color: white !important;
+}
+
+.images {
+    height: 70px;
+    top: 0;
+    left: 0;
+}
+
+span {
+    color: #37474f;
+}

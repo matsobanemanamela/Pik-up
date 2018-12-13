@@ -1,0 +1,150 @@
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: transparent;">
+        <a routerLink='/homepage' routerLinkActive='active'><img src="\assets\IMG-20180903-WA0001.jpg" class="images" alt=""></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a routerLink='/transportation' routerLinkActive='active' class="nav-link"><span> <i class="fas fa-car"></i> Transportation </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/sales' routerLinkActive='active' class="nav-link"><span><i class="fas fa-shopping-bag"></i> Sales & Product </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/books-and-stationery' routerLinkActive='active' class="nav-link"><span> <i class="fas fa-book-open"></i> Books & stationery </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/accommodation' routerLinkActive='active' class="nav-link"><span><i class="fas fa-bed"></i> Accomodation</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span> <i class="fas fa-user"></i> Profile</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" routerLink='/profile' routerLinkActive='active'><i class="fas fa-universal-access"></i> Profile</a>
+                        <a class="dropdown-item" routerLink='/add-accommodation' routerLinkAactive='active'><i class="fas fa-city"></i> Add Accommodation</a>
+                        <a class="dropdown-item" routerLink='/add-transport' routerLinkActive='active'><i class="fas fa-car"></i> Add Transportation</a>
+                        <a class="dropdown-item" routerLink='/add-product-and-sales' routerLinkActive='active'> <i class="fas fa-box-open"></i> Add services</a>
+                        <a class="dropdown-item" routerLink='/add-skills-and-talent' routerLinkActive='active'><i class="fas fa-microphone-alt"></i> Add Skills & Talent</a>
+                        <!-- <a class="dropdown-item" routerLink='/add-books-and-stationery' routerLinkActive='active'><i class="fas fa-book-open"></i> Add Books & stationery </a> -->
+                        <a class="dropdown-item" routerLink='/add-sales' routerLinkActive='active'><i class="fas fa-capsules"></i> Add things you want to sell </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/skills-and-talent' routerLinkActive='active' class="nav-link"><span><i class="fas fa-microphone-alt"></i> Skills & Talent</span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/product-and-service' routerLinkActive='active' class="nav-link"><span><i class="fas fa-box-open"></i> Services</span></a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <section>
+        <div>
+            <h1>Add Your Book Details Below</h1>
+            <br>
+            <form #Bookingsinfo="ngForm" enctype="multipart/form-data">
+
+                <input type="hidden" name="BookID" #BookID="ngModel" [(ngModel)]="bookservice.selectedbooking.BookID">
+                <input type="hidden" name="UserID" #UserID="ngModel" [(ngModel)]="bookservice.selectedbooking.UserID">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <img src="http://localhost:8080/{{bookservice.selectedbooking.Image}}" [src]="Imageurl" alt=" " class="rounded-circle" style="width:100px; height: 100px;">
+                            <input type="file" #Image accept="image/*" name="Image" #Image="ngModel" [(ngModel)]="bookservice.selectedbooking.Image" class="form-control-file" id="photo-id" (change)="handleFileInput($event.target.files)" (change)="createFormData($event)">
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Book name</label>
+                                <input type="text" name="BookName" #BookName="ngModel" [(ngModel)]="bookservice.selectedbooking.BookName" class="form-control" placeholder="Book Name" required min="3" maxlength="80" style="widows: 290px;">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>Edition</label>
+                                <input type="text" name="Edition" #Edition="ngModel" [(ngModel)]="bookservice.selectedbooking.Edition" class="form-control" placeholder="Edition" required min="3" maxlength="15" style="widows: 390px;">
+                            </div>
+                            <div class="form-group">
+                                <label>Course</label>
+                                <input type="text" name="Course" #Course="ngModel" [(ngModel)]="bookservice.selectedbooking.Course" class="form-control" placeholder="Course" required min="3" maxlength="80" style="widows: 390px;">
+                            </div>
+                            <div class="form-group">
+                                <label>New/Used</label>
+                                <select id="neworused" name="neworused" #neworused="ngModel" [(ngModel)]="bookservice.selectedbooking.neworused" class="form-control" placeholder="neworused" style="widows: 390px;left: 0;" required>
+                    <!-- <option selected>New/Used</option> -->
+                    <option value="New">New</option>
+                    <option value="Used">Used</option>
+                  </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Book Price</label>
+                                <input type="text" name="Price" #Price="ngModel" [(ngModel)]="bookservice.selectedbooking.Price" class="form-control" placeholder="Book Price" required min="3" maxlength="15" style="widows: 390px;">
+                            </div>
+                            <div class="form-group">
+                                <label>Add any Description about the book</label>
+                                <textarea type="text" name="Comment" #Comment="ngModel" [(ngModel)]="bookservice.selectedbooking.Comment" class="form-control" placeholder="Write Message" style="widows: 390px; "></textarea>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col md">
+                                <button type="submit" [disabled]="!Bookingsinfo.valid" class="btn btn-outline-success" (click)="onSubmit(Bookingsinfo)">Add Book information</button>
+                            </div>
+                            <div class="col">
+                                <button type="submit" [disabled]="!Bookingsinfo.valid" class="btn btn-outline-info" (click)="UpdateBooking(Bookingsinfo)">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <br>
+        <br>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Book Name</th>
+                    <th scope="col">Edition</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">New or Used</th>
+                    <th scope="col">Book price</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bookmodel of bookservice.bookslist">
+                    <td>{{bookmodel.BookID}}</td>
+                    <td>{{bookmodel.BookName}}</td>
+                    <td>{{bookmodel.Edition}}</td>
+                    <td>{{bookmodel.Course}}</td>
+                    <td>{{bookmodel.neworused}}</td>
+                    <td>{{bookmodel.Price}}</td>
+                    <td> <img src="http://localhost:8080/{{bookmodel.Image}}" alt=" " class="rounded-circle" style="width:50px; height: 50px;"></td>
+                    <td>{{bookmodel.Comment}}</td>
+                    <td>
+                        <a class="fg" (click)="showForEdit(bookmodel)">
+                            <i class="far fa-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="fg" (click)="onDelete(bookmodel.BookID)">
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>

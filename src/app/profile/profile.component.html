@@ -1,0 +1,138 @@
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: transparent;">
+        <a routerLink='/homepage' routerLinkActive='active'><img src="\assets\IMG-20180903-WA0001.jpg" class="images" alt=""></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a routerLink='/transportation' routerLinkActive='active' class="nav-link"><span> <i class="fas fa-car"></i> Transportation </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/sales' routerLinkActive='active' class="nav-link"><span><i class="fas fa-shopping-bag"></i> Sales & Product </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/books-and-stationery' routerLinkActive='active' class="nav-link"><span> <i class="fas fa-book-open"></i> Books & stationery </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/accommodation' routerLinkActive='active' class="nav-link"><span><i class="fas fa-bed"></i> Accomodation</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span> <i class="fas fa-user"></i> Profile</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <!-- <a class="dropdown-item" routerLink='/profile' routerLinkActive='active'><i class="fas fa-universal-access"></i> Profile</a> -->
+                        <a class="dropdown-item" routerLink='/add-accommodation' routerLinkAactive='active'><i class="fas fa-city"></i> Add Accommodation</a>
+                        <a class="dropdown-item" routerLink='/add-transport' routerLinkActive='active'><i class="fas fa-car"></i> Add Transportation</a>
+                        <a class="dropdown-item" routerLink='/add-product-and-sales' routerLinkActive='active'> <i class="fas fa-box-open"></i> Add services</a>
+                        <a class="dropdown-item" routerLink='/add-skills-and-talent' routerLinkActive='active'><i class="fas fa-microphone-alt"></i> Add Skills & Talent</a>
+                        <a class="dropdown-item" routerLink='/add-books-and-stationery' routerLinkActive='active'><i class="fas fa-book-open"></i> Add Books & stationery </a>
+                        <a class="dropdown-item" routerLink='/add-sales' routerLinkActive='active'><i class="fas fa-capsules"></i> Add things you want to sell </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/skills-and-talent' routerLinkActive='active' class="nav-link"><span><i class="fas fa-microphone-alt"></i> Skills & Talent</span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/product-and-service' routerLinkActive='active' class="nav-link"><span><i class="fas fa-box-open"></i> Services</span></a>
+                </li>
+
+
+                <!-- <li class="nav-item"><a class="nav-link" (click)="Logout()"><span> Logout <i class="fas fa-sign-out-alt"></i></span></a></li> -->
+
+            </ul>
+
+        </div>
+
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <section>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Profile</h5>
+                <p class="card-text">Update Your Profile </p>
+                <form #userRegistrationForm="ngForm" (ngSubmit)="onSubmit(userRegistrationForm)" enctype="multipart/form-data">
+                    <div class="form-row">
+                        <input type="hidden" name="UserID" #UserID="ngModel" [(ngModel)]="usercliams.UserID">
+                        <div class="form-group">
+                            <div class="col">
+                                <!-- <label for="exampleFormControlFile1">Choose Image</label> -->
+                                <img src="http://localhost:8080/{{usercliams.Image}}" [src]="Imageurl" alt="" class="rounded-circle" style="width:150px; height: 150px; display: block;
+                                margin-left: auto;
+                                margin-right: auto;">
+                                <input type="file" #Image accept="image/*" name="Image" #Image="ngModel" [(ngModel)]="usercliams.Image" class="form-control-file" id="photo-id" (change)="createFormData($event)" (change)="handleFileInput($event.target.files)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <input type="text" name="Name" #Name="ngModel" [(ngModel)]="usercliams.Name" class="form-control" placeholder="Name" required min="3" maxlength="15" style="widows: 290px;">
+
+                        </div>
+                        <div class="form-group col">
+                            <input type="text" name="Surname" #Surname="ngModel" [(ngModel)]="usercliams.Surname" class="form-control" placeholder="Surname" required min="3" maxlength="15" style="widows: 390px;">
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <input type="number" name="StudentNumber" #StudentNumber="ngModel" [(ngModel)]="usercliams.StudentNumber" class="form-control" placeholder="Student Number" required>
+                        </div>
+                        <div class="form-group col">
+                            <select id="inputState" name="Institution" #Institution="ngModel" [(ngModel)]="usercliams.Institution" class="form-control" placeholder="Institution">
+                            <option selected>Institution</option>
+                            <option value="University of johannesburg">University of johannesburg</option>
+                            <option value="University of pretoria">University of pretoria</option>
+                            <option value="Tshwane University of Technology">Tshwane University of Technology</option>
+                          </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <input type="email" name="Email" #Email="ngModel" [(ngModel)]="usercliams.Email" class="form-control" [pattern]="emailPattern" placeholder="Email" (ngModelChange)="onChange($event)">
+                        </div>
+                        <div class="col">
+                            <input type="password" name="Password" #Password="ngModel" [(ngModel)]="usercliams.Password" class="form-control" placeholder="Password" required min="3">
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <input type="text" name="MobileNumber" #MobileNumber="ngModel" [(ngModel)]="usercliams.MobileNumber" class="form-control" placeholder="Mobile Number" required min="3" maxlength="10">
+                        </div>
+
+
+                        <div class="form-group col">
+                            <select id="Gender" name="Gender" #Gender="ngModel" [(ngModel)]="usercliams.Gender" class="form-control" placeholder="Gender" style="width: 100%">
+                            <option selected>Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                          </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div *ngFor="let user of userlist">
+                        <input type="text" name="name" class="form-control" placeholder="Gender">
+                    </div>
+                    <br>
+                    <button type="submit" [disabled]="!userRegistrationForm.valid && !validEmail" class="btn btn-primary"><i class="far fa-edit"></i>
+                         Update Profile</button>
+                    <br>
+                    <br>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+</body>

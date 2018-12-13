@@ -1,0 +1,32 @@
+<body>
+    <br>
+
+    <img src="\assets\IMG-20180908-WA0004.jpg" alt="Responsive image" fa-align-center>
+    <br>
+
+    <br>
+    <p class="pik">PIK-UP APP FOR ALL SOUTH AFRICAN TERTIARY INSTITUTIONS.</p>
+    <div class="card" style="width: 38rem;">
+        <div class="card-body">
+            <h5 class="card-title">Sign in</h5>
+            <form #userSignINForm="ngForm" (ngSubmit)="OnSubmit(Email.value, Password.value)">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" name="Email" #Email="ngModel" [(ngModel)]="user.Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" name="Password" #Password="ngModel" [(ngModel)]="user.Password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+                <br>
+                <br>
+                <button routerLink='/register' type="submit" class="btn btn-primary"><i class="fas fa-edit"></i> Registeration</button>
+            </form>
+        </div>
+    </div>
+
+
+</body>

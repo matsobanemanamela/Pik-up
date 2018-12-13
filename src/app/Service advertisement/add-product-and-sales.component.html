@@ -1,0 +1,129 @@
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: transparent;">
+        <a routerLink='/homepage' routerLinkActive='active'><img src="\assets\IMG-20180903-WA0001.jpg" class="images" alt=""></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+  <span class="navbar-toggler-icon"></span>
+</button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a routerLink='/transportation' routerLinkActive='active' class="nav-link"><span> <i class="fas fa-car"></i> Transportation </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/sales' routerLinkActive='active' class="nav-link"><span><i class="fas fa-shopping-bag"></i> Sales & Product </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/books-and-stationery' routerLinkActive='active' class="nav-link"><span> <i class="fas fa-book-open"></i> Books & stationery </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/accommodation' routerLinkActive='active' class="nav-link"><span><i class="fas fa-bed"></i> Accomodation</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span> <i class="fas fa-user"></i> Profile</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" routerLink='/profile' routerLinkActive='active'><i class="fas fa-universal-access"></i> Profile</a>
+                        <a class="dropdown-item" routerLink='/add-accommodation' routerLinkAactive='active'><i class="fas fa-city"></i> Add Accommodation</a>
+                        <a class="dropdown-item" routerLink='/add-transport' routerLinkActive='active'><i class="fas fa-car"></i> Add Transportation</a>
+                        <!-- <a class="dropdown-item" routerLink='/add-product-and-sales' routerLinkActive='active'> <i class="fas fa-box-open"></i> Add services</a> -->
+                        <a class="dropdown-item" routerLink='/add-skills-and-talent' routerLinkActive='active'><i class="fas fa-microphone-alt"></i> Add Skills & Talent</a>
+                        <a class="dropdown-item" routerLink='/add-books-and-stationery' routerLinkActive='active'><i class="fas fa-book-open"></i> Add Books & stationery </a>
+                        <a class="dropdown-item" routerLink='/add-sales' routerLinkActive='active'><i class="fas fa-capsules"></i> Add things you want to sell </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/skills-and-talent' routerLinkActive='active' class="nav-link"><span><i class="fas fa-microphone-alt"></i> Skills & Talent</span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/product-and-service' routerLinkActive='active' class="nav-link"><span><i class="fas fa-box-open"></i> Services</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <br>
+    <br>
+    <br>
+    <section>
+        <div>
+            <h1>Add Your Service Details Below</h1>
+            <br>
+            <form #Serviceinfo="ngForm" enctype="multipart/form-data">
+
+                <input type="hidden" name="ServiceID" #ServiceID="ngModel" [(ngModel)]="servicesservice.selectedservice.ServiceID">
+                <input type="hidden" name="UserID" #UserID="ngModel" [(ngModel)]="servicesservice.selectedservice.UserID">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="custom-file">
+                            <img src="http://localhost:8080/{{servicesservice.selectedservice.ServiceImage}}" [src]="imageUrl" alt=" " class="rounded-circle" style="width:100px; height: 100px;">
+                            <br>
+                            <label>Choose Service Image</label>
+                            <input type="file" #ServiceImage accept="image/*" name="ServiceImage" #ServiceImage="ngModel" [(ngModel)]="servicesservice.selectedservice.ServiceImage" class="form-control-file" id="photo-id" (change)="createFormData($event)" (change)="handleFileInput($event.target.files)"
+                                required>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Type Of Service</label>
+                                <input type="text" name="Typeofservice" #Typeofservice="ngModel" [(ngModel)]="servicesservice.selectedservice.Typeofservice" class="form-control" placeholder="Service name" required min="3" maxlength="80" style="widows: 290px;">
+
+                            </div>
+                            <div class="form-group">
+                                <label>Service Price</label>
+                                <input type="number" name="Serviceprice" #Serviceprice="ngModel" [(ngModel)]="servicesservice.selectedservice.Serviceprice" class="form-control" placeholder="Product Price" required min="1" maxlength="15" style="widows: 390px;">
+                            </div>
+                            <div class="form-group">
+                                <label>Add any Description about your Service</label>
+                                <textarea type="text" name="Comment" #Comment="ngModel" [(ngModel)]="servicesservice.selectedservice.Comment" class="form-control" placeholder="Write message" style="widows: 390px;"></textarea>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col md">
+                                <button type="submit" [disabled]="!Serviceinfo.valid " class="btn btn-outline-success" (click)="onSubmit(Serviceinfo)">Add Service information</button>
+                            </div>
+                            <div class="col">
+                                <button type="submit" [disabled]="!Serviceinfo.valid" class="btn btn-outline-info" (click)="UpdateService(Serviceinfo)">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <br>
+        <br>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Type of service</th>
+                    <th scope="col">Service Price</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let servicemodel of servicesservice.servicelist">
+                    <td>{{servicemodel.ServiceID}}</td>
+                    <td>{{servicemodel.Typeofservice}}</td>
+                    <td>{{servicemodel.Serviceprice}}</td>
+                    <td> <img src="http://localhost:8080/{{servicemodel.ServiceImage}}" alt=" " class="rounded-circle" style="width:50px; height: 50px;"></td>
+                    <td>{{servicemodel.Comment}}</td>
+                    <td>
+                        <a class="fg" (click)="showForEdit(servicemodel)">
+                            <i class="far fa-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="fg" (click)="onDelete(servicemodel.ServiceID)">
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>

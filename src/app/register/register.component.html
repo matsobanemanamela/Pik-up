@@ -1,0 +1,89 @@
+<body>
+    <br>
+    <section>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Registeration</h5>
+                <p class="card-text">Input Your Details Below To Register. </p>
+                <form #userRegistrationForm="ngForm" (ngSubmit)="onSubmit(userRegistrationForm)" enctype="multipart/form-data">
+                    <div class="form-group">
+
+                        <label for="exampleFormControlFile1">Choose Image</label>
+                        <img [src]="Imageurl" alt="" class="rounded-circle" style="width:100px; height: 100px;">
+                        <input type="file" #Image accept="image/*" name="Image" #Image="ngModel" [(ngModel)]="user.Image" class="form-control-file" id="photo-id" (change)="createFormData($event)" (change)="handleFileInput($event.target.files)">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="Name">Enter Your Name</label>
+                            <input type="text" name="Name" #Name="ngModel" [(ngModel)]="user.Name" class="form-control" placeholder="Name" required min="3" maxlength="15">
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="Surname">Enter Your Surname</label>
+                            <input type="text" name="Surname" #Surname="ngModel" [(ngModel)]="user.Surname" class="form-control" placeholder="Surname" required min="3" maxlength="15">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="StudentNumber">Enter Your Student Number</label>
+                            <input type="number" name="StudentNumber" #StudentNumber="ngModel" [(ngModel)]="user.StudentNumber" class="form-control" placeholder="Student Number" required>
+                        </div>
+                        <div class="col">
+                            <label class="mr-sm-2" for="Institution">Select Your Institution</label>
+                            <select class="custom-select mr-sm-2" id="inputState" name="Institution" #Institution="ngModel" [(ngModel)]="user.Institution" class="form-control" placeholder="Institution">
+                            <!-- <option selected>Institution</option> -->
+                            <option value="University of Cape Town">University of Cape Town</option>
+                            <option value="University of Fort Hare">University of Fort Hare</option>
+                            <option value="University of the Free State">University of the Free State</option>
+                            <option value="University of KwaZulu-Natal">University of KwaZulu-Natal</option>
+                            <option value="University of Limpopo">University of Limpopo</option>
+                            <option value="North-West University">North-West University</option>
+                            <option value="University of Pretoria">University of Pretoria</option>
+                            <option value="Rhodes University">Rhodes University</option>
+                            <option value="Sefako Makgatho University">Sefako Makgatho University</option>
+                            <option value="University of Stellenbosch">University of Stellenbosch</option>
+                            <option value="University of the Western Cape">University of the Western Cape</option>
+                            <option value="University of the Witwatersrand">University of the Witwatersrand</option>
+                          </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="Email">Enter Your Email</label>
+                            <input type="email" name="Email" #Email="ngModel" [(ngModel)]="user.Email" class="form-control" [pattern]="emailPattern" placeholder="Email" (ngModelChange)="onChange($event)">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>City</label>
+                            <input type="password" name="Password" #Password="ngModel" [(ngModel)]="user.Password" class="form-control" placeholder="Password" required min="3">
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="MobileNumber">Enter Your Mobile Numbers</label>
+                        <input type="text" name="MobileNumber" #MobileNumber="ngModel" [(ngModel)]="user.MobileNumber" class="form-control" placeholder="Mobile Number" required min="3" maxlength="10">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="mr-sm-2" for="Gender">Gender</label>
+                        <select class="custom-select mr-sm-2" id="Gender" name="Gender" #Gender="ngModel" [(ngModel)]="user.Gender" class="form-control" placeholder="Gender">
+                            <!-- <option selected>Gender</option> -->
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                          </select>
+                    </div>
+                    <br>
+                    <button type="submit" [disabled]="!userRegistrationForm.valid && !validEmail" class="btn btn-primary"><i class="fas fa-edit"></i>Registeration</button>
+                    <br>
+                    <br>
+                </form>
+                <button class="btn btn-outline-success my-2 my-sm-0" routerLink='/login' routerLinkActive='active' type="submit"><i class="fas fa-sign-in-alt"></i>Sign in instead</button>
+            </div>
+        </div>
+    </section>
+</body>

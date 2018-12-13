@@ -1,0 +1,148 @@
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: transparent;">
+        <a routerLink='/homepage' routerLinkActive='active'><img src="\assets\IMG-20180903-WA0001.jpg" class="images" alt=""></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+<span class="navbar-toggler-icon"></span>
+</button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a routerLink='/transportation' routerLinkActive='active' class="nav-link"><span> <i class="fas fa-car"></i> Transportation </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/sales' routerLinkActive='active' class="nav-link"><span><i class="fas fa-shopping-bag"></i> Sales & Product </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/books-and-stationery' routerLinkActive='active' class="nav-link"><span> <i class="fas fa-book-open"></i> Books & stationery </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/accommodation' routerLinkActive='active' class="nav-link"><span><i class="fas fa-bed"></i> Accomodation</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span> <i class="fas fa-user"></i> Profile</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" routerLink='/profile' routerLinkActive='active'><i class="fas fa-universal-access"></i> Profile</a>
+                        <a class="dropdown-item" routerLink='/add-accommodation' routerLinkAactive='active'><i class="fas fa-city"></i> Add Accommodation</a>
+                        <a class="dropdown-item" routerLink='/add-transport' routerLinkActive='active'><i class="fas fa-car"></i> Add Transportation</a>
+                        <a class="dropdown-item" routerLink='/add-product-and-sales' routerLinkActive='active'> <i class="fas fa-box-open"></i> Add services</a>
+                        <!-- <a class="dropdown-item" routerLink='/add-skills-and-talent' routerLinkActive='active'><i class="fas fa-microphone-alt"></i> Add Skills & Talent</a> -->
+                        <a class="dropdown-item" routerLink='/add-books-and-stationery' routerLinkActive='active'><i class="fas fa-book-open"></i> Add Books & stationery </a>
+                        <a class="dropdown-item" routerLink='/add-sales' routerLinkActive='active'><i class="fas fa-capsules"></i> Add things you want to sell </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/skills-and-talent' routerLinkActive='active' class="nav-link"><span><i class="fas fa-microphone-alt"></i> Skills & Talent</span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/product-and-service' routerLinkActive='active' class="nav-link"><span><i class="fas fa-box-open"></i> Services</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <section>
+        <div>
+            <h1>Add Your Skills and Talent Details Below</h1>
+            <br>
+            <form #skillsandtaleninfo="ngForm" enctype="multipart/form-data">
+
+                <input type="hidden" name="skillandtalentID" #skillandtalentID="ngModel" [(ngModel)]="skillsandtalentservice.selectedtalentandskillmodel.skillandtalentID">
+                <input type="hidden" name="UserID" #UserID="ngModel" [(ngModel)]="skillsandtalentservice.selectedtalentandskillmodel.UserID">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="custom-file">
+                            <img src="http://localhost:8080/{{skillsandtalentservice.selectedtalentandskillmodel.Image}}" [src]="Imageurl" alt=" " class="rounded-circle" style="width:100px; height: 100px;">
+                            <br>
+                            <label>Choose Your Image</label>
+                            <input type="file" #Image accept="image/*" name="Image" #Image="ngModel" [(ngModel)]="skillsandtalentservice.selectedtalentandskillmodel.Image" class="form-control-file" id="photo-id" (change)="createFormData($event)" (change)="handleFileInput($event.target.files)">
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="custom-file">
+                            <label>Upload Your Video</label>
+                            <input type="file" #Video accept="video/*" name="Video" #Video="ngModel" [(ngModel)]="skillsandtalentservice.selectedtalentandskillmodel.Video" class="form-control-file" id="Video" (change)="createFormData($event)" (change)="handleFileInputVideo($event.target.files)">
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="custom-file">
+
+                            <label>Upload Your Song</label>
+                            <input type="file" #Song accept="audio/*" name="Song" #Song="ngModel" [(ngModel)]="skillsandtalentservice.selectedtalentandskillmodel.Song" class="form-control-file" id="song-Id" (change)="createFormData($event)" (change)="handleFileInputMP3($event.target.files)">
+                        </div>
+                        <br>
+                        <br>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Enter Type Of skiils or Talent that you have</label>
+                                <input type="text" name="TypeofskillORtalent" #TypeofskillORtalent="ngModel" [(ngModel)]="skillsandtalentservice.selectedtalentandskillmodel.TypeofskillORtalent" class="form-control" placeholder="Enter Your Skiils/Talent" required min="3" maxlength="80"
+                                    style="widows: 290px;">
+
+                            </div>
+                            <div class="form-group">
+                                <label>Add any Comment Based on your skills or talent</label>
+                                <textarea type="text" name="Comment" #Comment="ngModel" [(ngModel)]="skillsandtalentservice.selectedtalentandskillmodel.Comment" class="form-control" placeholder="Write message" style="widows: 390px;"></textarea>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col md">
+                                <button type="submit" [disabled]="!skillsandtaleninfo.valid" class="btn btn-outline-success" (click)="onSubmit(skillsandtaleninfo)">Add Service information</button>
+                            </div>
+                            <div class="col">
+                                <button type="submit" [disabled]="!skillsandtaleninfo.valid" class="btn btn-outline-info" (click)="UpdateSkillsandTalent(skillsandtaleninfo)">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <br>
+        <br>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Type of skill OR talente</th>
+                    <th scope="col">Comment</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Video</th>
+                    <th scope="col">Song</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let talentandskillmodel of skillsandtalentservice.talentandskillmodelList">
+                    <td>{{talentandskillmodel.skillandtalentID}}</td>
+                    <td>{{talentandskillmodel.TypeofskillORtalent}}</td>
+                    <td>{{talentandskillmodel.Comment}}</td>
+                    <td> <img src="http://localhost:8080/{{talentandskillmodel.Image}}" alt=" " class="rounded-circle" style="width:50px;height:50px;"></td>
+                    <td> <video controls>
+                        <source type="video/webm" src="http://localhost:8080/{{talentandskillmodel.Video}}" style="width:30px;height:30px;" >
+                            <source type="video/mp4" src="http://localhost:8080/{{talentandskillmodel.Video}}" style="width:30px;height:30px;">
+                    </video>
+                    </td>
+                    <td>
+                        <audio src="http://localhost:8080/{{talentandskillmodel.Song}}" style="width:30px; height: 30px;"></audio>
+                    </td>
+                    <td>
+                        <a class="fg" (click)="showForEdit(talentandskillmodel)">
+                            <i class="far fa-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="fg" (click)="onDelete(talentandskillmodel.skillandtalentID)">
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</body>

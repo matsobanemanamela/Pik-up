@@ -1,0 +1,104 @@
+nav {
+    position: absolute;
+    /* top: 30px; */
+    z-index: 999;
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.nav .navbar-nav a {
+    color: white !important;
+}
+
+.images {
+    height: 70px;
+    top: 0;
+    left: 0;
+}
+
+span {
+    color: #37474f;
+}
+
+.card {
+    background: #fff;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .4);
+    border-radius: 10px;
+    transition: 0.5s;
+    align-content: center;
+    /* width: 590px; */
+    border-color: transparent;
+    margin: 0 auto;
+    /* Added */
+    float: none;
+    /* Added */
+    margin-bottom: 10px;
+}
+
+.card:hover {
+    box-shadow: 0 30px 70px rgba(0, 0, 0, .5);
+}
+
+.flex {
+    text-align: center;
+}
+
+body {
+    background: url("/assets/whitewithgold.jpg") no-repeat center center fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+}
+
+p {
+    font-family: 'Tangerine', serif;
+    font-size: 15px;
+    text-shadow: 4px 4px 4px #aaa;
+}
+
+.card .card-reveal {
+    padding: 20px;
+    position: absolute;
+    background-color: #FFF;
+    width: 100%;
+    overflow-y: auto;
+    /*top: 0;*/
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: 1;
+    display: none;
+}
+
+.card .card-reveal p {
+    color: rgba(0, 0, 0, 0.71);
+    margin: 20px;
+}
+
+.para {
+    font-family: 'Tangerine', serif;
+    font-size: 20px;
+    text-shadow: 4px 4px 4px #aaa;
+}
+
+.card-header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* .card-img-top {
+width: 650px;
+} */

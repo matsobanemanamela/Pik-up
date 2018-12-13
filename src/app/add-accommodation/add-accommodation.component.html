@@ -1,0 +1,249 @@
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: transparent;">
+        <a routerLink='/homepage' routerLinkActive='active'><img src="\assets\IMG-20180903-WA0001.jpg" class="images" alt=""></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+<span class="navbar-toggler-icon"></span>
+</button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a routerLink='/transportation' routerLinkActive='active' class="nav-link"><span> <i class="fas fa-car"></i> Transportation </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/sales' routerLinkActive='active' class="nav-link"><span><i class="fas fa-shopping-bag"></i> Sales & Product </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/books-and-stationery' routerLinkActive='active' class="nav-link"><span> <i class="fas fa-book-open"></i> Books & stationery </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/accommodation' routerLinkActive='active' class="nav-link"><span><i class="fas fa-bed"></i> Accomodation</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span> <i class="fas fa-user"></i> Profile</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" routerLink='/profile' routerLinkActive='active'><i class="fas fa-universal-access"></i> Profile</a>
+                        <!-- <a class="dropdown-item" routerLink='/add-accommodation' routerLinkAactive='active'><i class="fas fa-city"></i> Add Accommodation</a> -->
+                        <a class="dropdown-item" routerLink='/add-transport' routerLinkActive='active'><i class="fas fa-car"></i> Add Transportation</a>
+                        <a class="dropdown-item" routerLink='/add-product-and-sales' routerLinkActive='active'> <i class="fas fa-box-open"></i> Add services</a>
+                        <a class="dropdown-item" routerLink='/add-skills-and-talent' routerLinkActive='active'><i class="fas fa-microphone-alt"></i> Add Skills & Talent</a>
+                        <a class="dropdown-item" routerLink='/add-books-and-stationery' routerLinkActive='active'><i class="fas fa-book-open"></i> Add Books & stationery </a>
+                        <a class="dropdown-item" routerLink='/add-sales' routerLinkActive='active'><i class="fas fa-capsules"></i> Add things you want to sell </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/skills-and-talent' routerLinkActive='active' class="nav-link"><span><i class="fas fa-microphone-alt"></i> Skills & Talent</span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/product-and-service' routerLinkActive='active' class="nav-link"><span><i class="fas fa-box-open"></i> Services</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <section>
+        <div>
+            <h1>Add Your Accommodation Details Below</h1>
+            <br>
+            <form #Accommodationinfo="ngForm" enctype="multipart/form-data">
+                <input type="hidden" name="AccommodationID" #AccommodationID="ngModel" [(ngModel)]="accomodationservice.selectedAccommodation.AccommodationID">
+                <input type="hidden" name="UserID" #UserID="ngModel" [(ngModel)]="accomodationservice.selectedAccommodation.UserID">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Enter your Accommodation requirement below</h5>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Type of Accommodation</label>
+                                <input type="text" name="TypeOfAccommodation" #TypeOfAccommodation="ngModel" [(ngModel)]="accomodationservice.selectedAccommodation.TypeOfAccommodation" class="form-control" id="typeofaccommodation" placeholder="Type of Accommodation" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Number of Rooms</label>
+                                <input type="number" name="NumberofRooms" #NumberofRooms="ngModel" [(ngModel)]="accomodationservice.selectedAccommodation.NumberofRooms" class="form-control" id="NumberofRooms" placeholder="Number of Rooms" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Number of People Per Room</label>
+                                <input type="number" name="NumberofPeoplePerRoom" #NumberofPeoplePerRoom="ngModel" [(ngModel)]="accomodationservice.selectedAccommodation.NumberofPeoplePerRoom" class="form-control" id="NumberofPeoplePerRoom" placeholder="Number of People Per Room" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Distance to Campus</label>
+                                <input type="text" name="DistancetoCampus" #DistancetoCampus="ngModel" [(ngModel)]="accomodationservice.selectedAccommodation.DistancetoCampus" class="form-control" id="DistancetoCampus" placeholder="Distance to Campus" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="mr-sm-2" for="inlineFormCustomSelect">WI-FI availability</label>
+                                <select class="custom-select mr-sm-2" name="WIFI" #WIFI [(ngModel)]="accomodationservice.selectedAccommodation.WIFI" id="inlineFormCustomSelect">
+                              <!-- <option selected>choose yes / no</option> -->
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                            </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Enter accommodation Price</label>
+                                <input type="number" name="Price" #Price="ngModel" [(ngModel)]="accomodationservice.selectedAccommodation.Price" class="form-control" id="Price" placeholder="Enter Price" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Enter Description</label>
+                            <textarea type="Text" name="Comment" #Comment="ngModel" [(ngModel)]="accomodationservice.selectedAccommodation.Comment" class="form-control" id="Comment" placeholder="Enter Comment" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Choose your Accommodation Images below</h5>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <div class="custom-file">
+                                    <img src="http://localhost:8080/{{accomodationservice.selectedAccommodation.MainImage}}" [src]="Imageurl" alt=" " class="rounded-circle" style="width:100px; height: 100px;">
+                                    <br>
+
+                                    <label>Choose Your Main Photo</label>
+                                    <input type="file" #MainImage accept="image/*" name="MainImage" #MainImage="ngModel" [(ngModel)]="accomodationservice.selectedAccommodation.MainImage" class="form-control-file" id="MainImage" (change)="createFormData($event)" (change)="handleFileInput($event.target.files)">
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="form-group col-md-6">
+                                <div class="custom-file">
+                                    <img src="http://localhost:8080/{{accomodationservice.selectedAccommodation.RoomImage}}" [src]="imageRoom" alt=" " class="rounded-circle" style="width:100px; height: 100px;">
+                                    <br>
+
+                                    <label>Choose BedRoom Image</label>
+                                    <input type="file" #RoomImage accept="image/*" name="RoomImage" #RoomImage="ngModel" [(ngModel)]="accomodationservice.selectedAccommodation.RoomImage" class="form-control-file" id="RoomImage" (change)="createForm($event)" (change)="handleFileInputRoom($event.target.files)">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <div class="custom-file">
+                                    <img src="http://localhost:8080/{{accomodationservice.selectedAccommodation.KitchenImage}}" [src]="KitchenImg" alt=" " class="rounded-circle" style="width:100px; height: 100px;">
+                                    <br>
+                                    <label>Choose Kitchen Image</label>
+                                    <input type="file" #KitchenImage accept="image/*" name="KitchenImage" #KitchenImage="ngModel" [(ngModel)]="accomodationservice.selectedAccommodation.KitchenImage" class="form-control-file" id="KitchenImage" (change)="createFormData($event)" (change)="handleFileInputkitchen($event.target.files)">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div class="custom-file">
+                                    <img src="http://localhost:8080/{{accomodationservice.selectedAccommodation.BathroomImage}}" [src]="BathroomImg" alt=" " class="rounded-circle" style="width:100px; height: 100px;">
+                                    <br>
+                                    <label>Choose Bathroom Image</label>
+                                    <input type="file" #BathroomImage accept="image/*" name="BathroomImage" #BathroomImage="ngModel" [(ngModel)]="accomodationservice.selectedAccommodation.BathroomImage" class="form-control-file" id="BathroomImage" (change)="createForm($event)" (change)="handleFileInputbath($event.target.files)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Enter your Accommodation Address below</h5>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Address</label>
+                                <input type="text" name="Address" #Address="ngModel" [(ngModel)]="accomodationservice.selectedAccommodation.Address" class="form-control" id="Address" placeholder="Address" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Suburb</label>
+                                <input type="text" name="Suburb" #Suburb="ngModel" [(ngModel)]="accomodationservice.selectedAccommodation.Suburb" class="form-control" id="Suburb" placeholder="Suburb" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>City</label>
+                                <input type="text" name="City" #City="ngModel" [(ngModel)]="accomodationservice.selectedAccommodation.City" class="form-control" id="City" placeholder="City" required>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="mr-sm-2" for="Province">Province</label>
+                                <select class="custom-select mr-sm-2" name="Province" #Province [(ngModel)]="accomodationservice.selectedAccommodation.Province" id="Province">
+                                    <!-- <option selected>choose yes / no</option> -->
+                                    <option value="Eastern Cape">Eastern Cape</option>
+                                   <option value="Free State">Free State</option>
+                                   <option value="Gauteng">Gauteng</option>
+                                   <option value="KwaZulu-Natal">KwaZulu-Natal</option>
+                                   <option value="Limpopo">Limpopo</option>
+                                   <option value="Mpumalanga">Mpumalanga</option>
+                                   <option value="North West">North West</option>
+                                   <option value="Northern Cape">Northern Cape</option>
+                                   <option value="Western Cape">Western Cape</option>
+                                   
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Country</label>
+                                <input type="text" name="Country" #Country="ngModel" [(ngModel)]="accomodationservice.selectedAccommodation.Country" class="form-control" id="Country" placeholder="Country" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Enter Postal Code</label>
+                                <input type="text" name="PostalCode" #PostalCode="ngModel" [(ngModel)]="accomodationservice.selectedAccommodation.PostalCode" class="form-control" id="PostalCode" placeholder="Postal Code" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col md">
+                                <button type="submit" [disabled]="!Accommodationinfo.valid " class="btn btn-outline-success" (click)="onSubmit(Accommodationinfo)">Add Service information</button>
+                            </div>
+                            <div class="col">
+
+                                <button type="submit" [disabled]="!Accommodationinfo.valid" class="btn btn-outline-info" (click)="UpdateAccommodation(Accommodationinfo)">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <br>
+        <br>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Type of accommodation</th>
+                    <th scope="col">Number of Rooms</th>
+                    <th scope="col">Number of People Per Room</th>
+                    <th scope="col">Distance to Campus</th>
+                    <th scope="col">WI-FI</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let accomodationmodel of accomodationservice.accommodationList">
+                    <td>{{accomodationmodel.AccommodationID}}</td>
+                    <td>{{accomodationmodel.TypeOfAccommodation}}</td>
+                    <td>{{accomodationmodel.NumberofRooms}}</td>
+                    <td>{{accomodationmodel.NumberofPeoplePerRoom}}</td>
+                    <td>{{accomodationmodel.DistancetoCampus}}</td>
+                    <td>{{accomodationmodel.WIFI}}</td>
+                    <td>{{accomodationmodel.Price}}</td>
+                    <td>{{accomodationmodel.Comment}}</td>
+                    <td>
+                        <a class="fg" (click)="showForEdit(accomodationmodel)">
+                            <i class="far fa-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="fg" (click)="onDelete(accomodationmodel.AccommodationID)">
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>

@@ -1,0 +1,157 @@
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: transparent;">
+        <a routerLink='/homepage' routerLinkActive='active'><img src="\assets\IMG-20180903-WA0001.jpg" class="images" alt=""></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a routerLink='/transportation' routerLinkActive='active' class="nav-link"><span> <i class="fas fa-car"></i> Transportation </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/sales' routerLinkActive='active' class="nav-link"><span><i class="fas fa-shopping-bag"></i> Sales & Product </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/books-and-stationery' routerLinkActive='active' class="nav-link"><span> <i class="fas fa-book-open"></i> Books & stationery </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/accommodation' routerLinkActive='active' class="nav-link"><span><i class="fas fa-bed"></i> Accomodation</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span> <i class="fas fa-user"></i> Profile</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" routerLink='/profile' routerLinkActive='active'><i class="fas fa-universal-access"></i> Profile</a>
+                        <a class="dropdown-item" routerLink='/add-accommodation' routerLinkAactive='active'><i class="fas fa-city"></i> Add Accommodation</a>
+                        <a class="dropdown-item" routerLink='/add-transport' routerLinkActive='active'><i class="fas fa-car"></i> Add Transportation</a>
+                        <a class="dropdown-item" routerLink='/add-product-and-sales' routerLinkActive='active'> <i class="fas fa-box-open"></i> Add services</a>
+                        <a class="dropdown-item" routerLink='/add-skills-and-talent' routerLinkActive='active'><i class="fas fa-microphone-alt"></i> Add Skills & Talent</a>
+                        <a class="dropdown-item" routerLink='/add-books-and-stationery' routerLinkActive='active'><i class="fas fa-book-open"></i> Add Books & stationery </a>
+                        <!-- <a class="dropdown-item" routerLink='/add-sales' routerLinkActive='active'><i class="fas fa-capsules"></i> Add things you want to sell </a> -->
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/skills-and-talent' routerLinkActive='active' class="nav-link"><span><i class="fas fa-microphone-alt"></i> Skills & Talent</span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/product-and-service' routerLinkActive='active' class="nav-link"><span><i class="fas fa-box-open"></i> Services</span></a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <section>
+        <div>
+            <h1>Add Your Product Details Below</h1>
+            <br>
+            <form class="was-validated" #Productinfo="ngForm" enctype="multipart/form-data">
+
+                <input type="hidden" name="ProductID" #ProductID="ngModel" [(ngModel)]="productservice.selectedproduct.ProductID">
+                <input type="hidden" name="UserID" #UserID="ngModel" [(ngModel)]="productservice.selectedproduct.UserID">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="custom-file">
+                            <img src="http://localhost:8080/{{productservice.selectedproduct.ProductImage}}" [src]="Imageurl" alt=" " class="rounded-circle" style="width:100px; height: 100px;">
+                            <br>
+                            <label>Choose Product Image</label>
+                            <input type="file" #ProductImage accept="image/*" name="ProductImage" #ProductImage="ngModel" [(ngModel)]="productservice.selectedproduct.ProductImage" class="form-control-file" id="photo-id" (change)="createFormData($event)" (change)="handleFileInput($event.target.files)"
+                                required>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Product name</label>
+                                <input type="text" name="Productname" #Productname="ngModel" [(ngModel)]="productservice.selectedproduct.Productname" class="form-control" placeholder="Product name" required min="3" maxlength="80" style="widows: 290px;">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>Category name</label>
+                                <input type="text" name="Categoryname" #Categoryname="ngModel" [(ngModel)]="productservice.selectedproduct.Categoryname" class="form-control" placeholder="Category name" required min="3" maxlength="15" style="widows: 390px;">
+                            </div>
+                            <div class="form-group">
+                                <label>Number of Item</label>
+                                <input type="number" name="NumberofItem" #NumberofItem="ngModel" [(ngModel)]="productservice.selectedproduct.NumberofItem" class="form-control" placeholder="Number of Item" required min="1" maxlength="80" style="widows: 390px;">
+                            </div>
+                            <div class="form-group">
+                                <label>New or Used</label>
+                                <select class="custom-select mr-sm-2" id="Neworused" name="NeworUsed" #NeworUsed="ngModel" [(ngModel)]="productservice.selectedproduct.NeworUsed" class="form-control" placeholder="NeworUsed" style="widows: 390px;left: 0;" required>
+                    <!-- <option selected>New/Used</option> -->
+                    <option value="New">New</option>
+                    <option value="Used">Used</option>
+                  </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Product Price</label>
+                                <input type="number" name="ProductPrice" #ProductPrice="ngModel" [(ngModel)]="productservice.selectedproduct.ProductPrice" class="form-control" placeholder="Product Price" required min="1" maxlength="15" style="widows: 390px;">
+                            </div>
+                            <div class="form-group">
+                                <label>Add any Description about your product</label>
+                                <textarea type="text" name="Comment" #Comment="ngModel" [(ngModel)]="productservice.selectedproduct.Comment" class="form-control" placeholder="Write message" style="widows: 390px;"></textarea>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col md">
+                                <button type="submit" [disabled]="!Productinfo.valid" class="btn btn-outline-success" (click)="onSubmit(Productinfo)">Add your product information</button>
+                            </div>
+                            <div class="col">
+                                <button type="submit" [disabled]="!Productinfo.valid" class="btn btn-outline-info" (click)="UpdateProduct(Productinfo)">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <br>
+        <br>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Product name</th>
+                    <th scope="col">Category name</th>
+                    <th scope="col">Number of Item</th>
+                    <th scope="col">New or Used</th>
+                    <th scope="col">Product Price</th>
+                    <th scope="col">Product Image</th>
+                    <th scope="col">Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let productmodel of productservice.productlist">
+                    <td>{{productmodel.ProductID}}</td>
+                    <td>{{productmodel.Productname}}</td>
+                    <td>{{productmodel.Categoryname}}</td>
+                    <td>{{productmodel.NumberofItem}}</td>
+                    <td>{{productmodel.NeworUsed}}</td>
+                    <td>{{productmodel.ProductPrice}}</td>
+                    <td>
+                        <img src="http://localhost:8080/{{productmodel.ProductImage}}" alt="" class="rounded-circle" style="width:50px; height: 50px;"></td>
+                    <td>{{productmodel.Comment}}</td>
+                    <td>
+                        <a class="fg" (click)="showForEdit(productmodel)">
+                            <i class="far fa-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="fg" (click)="onDelete(productmodel.ProductID)">
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>

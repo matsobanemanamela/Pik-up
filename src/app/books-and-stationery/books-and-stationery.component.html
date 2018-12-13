@@ -1,0 +1,115 @@
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: transparent;">
+        <a routerLink='/homepage' routerLinkActive='active'><img src="\assets\IMG-20180903-WA0001.jpg" class="images" alt=""></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+<span class="navbar-toggler-icon"></span>
+</button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a routerLink='/transportation' routerLinkActive='active' class="nav-link"><span> <i class="fas fa-car"></i> Transportation </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/sales' routerLinkActive='active' class="nav-link"><span><i class="fas fa-shopping-bag"></i> Sales & Product </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/books-and-stationery' routerLinkActive='active' class="nav-link"><span> <i class="fas fa-book-open"></i> Books & stationery </span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/accommodation' routerLinkActive='active' class="nav-link"><span><i class="fas fa-bed"></i> Accomodation</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span> <i class="fas fa-user"></i> Profile</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" routerLink='/profile' routerLinkActive='active'><i class="fas fa-universal-access"></i> Profile</a>
+                        <a class="dropdown-item" routerLink='/add-accommodation' routerLinkAactive='active'><i class="fas fa-city"></i> Add Accommodation</a>
+                        <a class="dropdown-item" routerLink='/add-transport' routerLinkActive='active'><i class="fas fa-car"></i> Add Transportation</a>
+                        <a class="dropdown-item" routerLink='/add-product-and-sales' routerLinkActive='active'> <i class="fas fa-box-open"></i> Add services</a>
+                        <a class="dropdown-item" routerLink='/add-skills-and-talent' routerLinkActive='active'><i class="fas fa-microphone-alt"></i> Add Skills & Talent</a>
+                        <a class="dropdown-item" routerLink='/add-books-and-stationery' routerLinkActive='active'><i class="fas fa-book-open"></i> Add Books & stationery </a>
+                        <a class="dropdown-item" routerLink='/add-sales' routerLinkActive='active'><i class="fas fa-capsules"></i> Add things you want to sell </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/skills-and-talent' routerLinkActive='active' class="nav-link"><span><i class="fas fa-microphone-alt"></i> Skills & Talent</span></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink='/product-and-service' routerLinkActive='active' class="nav-link"><span><i class="fas fa-box-open"></i> Services</span></a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="flex" *ngFor="let bookmodel of bookservice.allbooklist">
+        <div class="card" style="width: 60rem; ">
+            <img class="card-img-top" src="http://localhost:8080/{{bookmodel.Image}}" alt="Card image cap" style="height:300px;">
+            <div class="card-body">
+                <h4 class="card-title" style="text-align : center; font-weight: bold;font-size: 18px;">{{bookmodel.BookName}}</h4>
+                <p class="card-text">{{bookmodel.Comment}}</p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p><i class="fas fa-book"></i> Edition :{{bookmodel.Edition}} </p>
+                    </div>
+                    <div class="col-md-3">
+                        <p><i class="fas fa-book-reader"></i>Course :{{bookmodel.Course}}</p>
+                    </div>
+                    <div class="col-md-3">
+                        <p><i class="fa fa-money" aria-hidden="true"></i>Price :R{{bookmodel.Price}}</p>
+                    </div>
+                    <div class="col-md-3">
+                        <p><i class="fas fa-book"></i> NEW/USED : {{bookmodel.neworused}}</p>
+                    </div>
+                </div>
+                <br>
+                <div class="card-footer text-muted">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <button class="btn btn-primary" class="btn btn-outline-info" (click)="onSubmitlikes(bookmodel)"><i class="far fa-thumbs-up"></i> 12 Likes</button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-primary" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModalCenter" id="show" (click)="onClick($event,bookmodel.BookID)"><i class="fas fa-comments"></i> Comments</button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-primary" class="btn btn-outline-info"><i class="fas fa-share-alt-square"></i> Share</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- <button class="btn btn-primary ">Go somewhere</button> -->
+            </div>
+
+        </div>
+        <br>
+    </div>
+
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Comments</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+
+                    <input type="text" name="Comments" class="form-control" placeholder="Comment" id="Comments" required>
+                    <button type="button" class="btn btn-outline-info" (click)="onSubmit()"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
